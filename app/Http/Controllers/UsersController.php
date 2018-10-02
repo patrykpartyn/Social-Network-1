@@ -6,10 +6,14 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use App\Http\Middleware\CheckUserPermission;
 
 class UsersController extends Controller
 {
-    
+    public function __construct(){
+
+        $this->middleware('permisson',['only'=>['edit','update']]);
+    }
     /**
      * Display the specified resource.
      *
@@ -36,9 +40,9 @@ class UsersController extends Controller
     {
 
 
-       if( intval($id) !== Auth::id()){
-        abort(403,'brak dostępu');
-       }
+       // if( intval($id) !== Auth::id()){
+       //  abort(403,'brak dostępu');
+       // }
        $user=Auth::user();
         return view('users.edit',compact('user'));
     }
@@ -52,9 +56,9 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-         if( intval($id) !== Auth::id()){
-         abort(403,'brak dostępu');
-         }
+         // if( intval($id) !== Auth::id()){
+         // abort(403,'brak dostępu');
+         // }
 
         // $validator=Validator::make($request->all(),[
         //     'name'=>'required',
