@@ -34,6 +34,15 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    <form method="GET" action="{{url('/search')}}" class="navbar-form navbar-left">
+                        <div class="input-group mb-3">
+                          <input type="text" class="form-control" name="q" placeholder="Wpisz szukaną frazę" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                          <div class="input-group-append">
+                            <button type="submit">Szukaj</button>
+                          </div>
+                        </div>
+                        
+                    </form>
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
