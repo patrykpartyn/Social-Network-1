@@ -18,8 +18,16 @@
                     <p>{{$user->email}}</p>
 
                     @if(Auth::check() && $user->id != Auth::id())
-                    <form method="POST" action="{{url('friends/'.$user->id)}}"></form>
-                    <button class="btn btn-success">Zaproś do znajomych</button>
+
+                    @if(!friendship($user->id)->exists && !friendship($user->id)->accepted)
+                        <form method="POST" action="{{url('friends/'.$user->id)}}">
+                            {{csrf_field()}}
+                        <button class="btn btn-success">Zaproś do znajomych</button>
+                        </form>
+                        @elseif (friendship($user->id)->exists && !friendship($user->id)->accepted)
+                        <button class="btn btn-success disabled">Zaposzenie zostalo wyslae</button>
+
+                    @endif
                     @endif
 
                     
