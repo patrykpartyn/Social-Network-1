@@ -23,14 +23,16 @@ class PostsController extends Controller
         //     'content'=>$request->post_content,
         // ]);
 
-        $this->validate($request,[
-            'post_content'=>'required|min:5',
-        ])
+        
+    $this->validate($request,[
+                'post_content'=>'required|min:5',
+            ]);
 
         $post=new Post();
         $post->user_id=Auth::id();
         $post->content=$request->post_content;
         $post->save();
+
 
         return back();
     }
