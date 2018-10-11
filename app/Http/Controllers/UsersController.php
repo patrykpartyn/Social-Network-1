@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Http\Middleware\CheckUserPermission;
@@ -23,6 +24,7 @@ class UsersController extends Controller
     public function show($id)
     {
         $user=User::findOrFail($id);
+        $posts=Post::where('user_id',$id)->get();
         // return $user;
      //return view('users.show',['user'=>$user]);
 

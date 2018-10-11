@@ -21,6 +21,7 @@
             @endif
             </p>
             <p>{{ $user->email }}</p>
+            <p><a href="{{url('/users/'.$user->id.'/friends')}}">Pokaż wszystkich znajomych</a><span class="label label-primary">{{$user->friends()->count()}}</span></p>
 
             @if (Auth::check() && $user->id !== Auth::id())
                 

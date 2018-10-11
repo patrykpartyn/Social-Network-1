@@ -5,15 +5,15 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="card">
-                <div class="card-header">Lista znajomych</div>
+                <div class="card-header">Lista znajomych<span class="label label-default">{{$user->friends()->count()}}</span></div>
 
                 <div class="card-body">
 
-                    @if($friends->count()===0)
+                    @if($user->friends()->count()===0)
                     <h4 class="text-center"> BRAK Znajomywch</h4>
                     @else
                     <div class="row">
-                    @foreach($friends as $user)
+                    @foreach($user->friends() as $user)
                           <div class="col-sm-4 text-center">
                             <a href="{{url('/users/'.$user->id)}}">
                                 <div class="thumbnail">
